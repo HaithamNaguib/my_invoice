@@ -1,0 +1,7 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_person_entry,person.entry,model_person_entry,base.group_user,1,1,1,1
+access_classes_entry,classes.entry,model_classes_entry,base.group_user,1,1,1,1
+access_skills_entry,skills.entry,model_skills_entry,base.group_user,1,1,1,1
+
+
+

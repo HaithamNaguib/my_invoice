@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--tree view of the person model-->
+    <record id="person_entry_tree" model="ir.ui.view">
+        <field name="name">person.entry.tree</field>
+        <field name="model">person.entry</field>
+        <field name="arch" type="xml">
+            <tree string="Persons">
+                <!--                <field name="name_seq"/>-->
+                <field name="person_name"/>
+                <field name="job_id"/>
+                <field name="skill"/>
+                <field name="person_age"/>
+                <field name="person_email"/>
+                <field name="person_image"/>
+                <field name="person_gender"/>
+                <field name="blood_group"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--form view of the person model-->
+    <record id="person_entry_form" model="ir.ui.view">
+        <field name="name">person.entry.form</field>
+        <field name="model">person.entry</field>
+        <field name="arch" type="xml">
+            <form string="Persons">
+                <sheet>
+                    <field name="person_image" widget="image" class="oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="person_name"/>
+                            <!--                            <field name="job_id"/>-->
+                            <field name="job_id"
+                                   options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <!--                            <field name="skill"/>-->
+                            <field name="person_email"/>
+                            <!--                            <field name="name_seq" readonly="1"/>-->
+                            <field name="person_age" options='{"type": "number", "step": 1}'/>
+                        </group>
+                        <group>
+                            <field name="person_gender"/>
+                            <field name="blood_group" attrs="{'required': [('person_gender','=','m')] }"/>
+                            <field name="skill" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--action of the person menu-->
+    <record id="action_person" model="ir.actions.act_window">
+        <field name="name">Persons</field>
+        <field name="res_model">person.entry</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Enter Person
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="society_root" name="Society" sequence="0"/>
+    <menuitem id="person_entry" name="Persons" parent="society_root" action="action_person" sequence="10"/>
+</odoo>
